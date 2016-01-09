@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_id: MyString
+  customer_location: MyText
+  sub_total: 1.5
+  tax_total: 1.5
+  total_amount: 1.5
+
+two:
+  transaction_id: MyString
+  customer_location: MyText
+  sub_total: 1.5
+  tax_total: 1.5
+  total_amount: 1.5

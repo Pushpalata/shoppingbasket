@@ -1,0 +1,7 @@
+.row.basket-cnt
+  = link_to "Create Recipt", new_basket_path, :class => "btn big-btn"
+.row
+  - ProductCategory.each do |cat| 
+    .col-lg-3.item-cnt
+      .img-cnt
+        = image_tag(cat.downcase+"-cart.jpg")

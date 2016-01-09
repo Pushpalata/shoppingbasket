@@ -1,0 +1,51 @@
+.cart-cnt
+  .row
+    .cart-header.col-lg-12
+      New Receipt
+  = nested_form_for @basket, :html => {:class => "checkRedirection", :autocomplete => "off"} do |f|    
+    .row
+      .col-lg-12
+        .col-lg-3
+          %b
+            Customer Location
+        .col-lg-3
+          = f.select :customer_location, @states, :prompt => true
+        .col-lg-6
+    .clearfix.border-bottom
+    .row.basket-item-list
+      .col-lg-12.cart-item.item-header
+        .col-lg-3
+          Category
+        .col-lg-3
+          Description  
+        .col-lg-2
+          Price
+        .col-lg-2
+          Quantity
+        .col-lg-2
+          Remove
+        .clearfix
+      .clearfix
+      .col-lg-12.cart-item
+        = f.fields_for :basket_items do |bt|
+          .col-lg-3
+            = bt.select :product_category, ProductCategory, :prompt => true
+          .col-lg-3
+            = bt.text_field :description
+          .col-lg-2
+            = bt.number_field :price, :step => 'any'
+          .col-lg-2
+            = bt.number_field :quantity
+          .col-lg-2
+            = bt.link_to_remove "X", :class => "btn remove"
+          .clearfix
+      .clearfix
+      .col-lg-12.cart-item
+        = f.link_to_add "Add Item", :basket_items, :class => "btn fr"
+      .clearfix
+    .row
+      .col-lg-12
+        = f.submit "Create Receipt", :class => "btn checkout-btn"
+  .clearfix
+
+

@@ -1,0 +1,28 @@
+.cart-cnt
+  .row
+    .cart-header.col-lg-12
+      Receipts
+  .row.basket-item-list
+    .col-lg-12.cart-item.item-header
+      .col-lg-3
+        Transaction ID
+      .col-lg-3
+        Customer Location
+      .col-lg-3
+        Amount
+      .col-lg-3
+        Action
+      .clearfix
+    .clearfix
+    - @baskets.each do |basket|
+      .col-lg-12.cart-item
+        .fields
+          .col-lg-3
+            = basket.transaction_id
+          .col-lg-3
+            = US_States[basket.customer_location] rescue basket.customer_location
+          .col-lg-3
+            = basket.total_amount
+          .col-lg-3
+            = link_to "View", basket
+          .clearfix

@@ -1,0 +1,68 @@
+.cart-cnt
+  .row
+    .cart-header.col-lg-12
+      = @basket.transaction_id
+    .row
+      .col-lg-12
+        .col-lg-3
+          %b
+            Customer Location
+        .col-lg-3
+          = US_States[@basket.customer_location] rescue @basket.customer_location
+        .col-lg-6
+    .clearfix.border-bottom
+    .row.basket-item-list
+      .col-lg-12.cart-item.item-header
+        .col-lg-2
+          Category
+        .col-lg-3
+          Description
+        .col-lg-2
+          Price
+        .col-lg-2
+          Quantity
+        .col-lg-3
+          Amount
+        .clearfix
+      .clearfix
+      - @basket.basket_items.each do |basket_item|
+        .col-lg-12.cart-item
+          .fields
+            .col-lg-2
+              = basket_item.product_category
+            .col-lg-3
+              = basket_item.description
+            .col-lg-2
+              = basket_item.price
+            .col-lg-2
+              = basket_item.quantity
+            .col-lg-3
+              = basket_item.amount
+            .clearfix
+      .clearfix
+      .col-lg-12
+        .col-lg-8
+        .col-lg-2.border-bottom.align-right
+          Subtotal:
+        .col-lg-2.border-bottom
+          = @basket.sub_total 
+        .clearfix
+      .col-lg-12
+        .col-lg-8
+        .col-lg-2.border-bottom.align-right
+          Tax:
+        .col-lg-2.border-bottom
+          = @basket.tax_total 
+        .clearfix
+      .col-lg-12
+        .col-lg-8
+        .col-lg-2.align-right
+          Grand Total:
+        .col-lg-2
+          = @basket.total_amount
+        .clearfix
+      .clearfix
+    .clearfix
+  .clearfix
+
+
